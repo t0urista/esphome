@@ -96,4 +96,4 @@ async def to_code(config):
 
     if CONF_MOTION in config:                                                           
         sens = await binary_sensor.new_binary_sensor(config[CONF_MOTION])               
-        cg.add(parent.set_window(sens))                                                 
+        cg.add(parent.set_motion(sens))                                                 
