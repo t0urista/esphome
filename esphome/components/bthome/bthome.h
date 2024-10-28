@@ -207,12 +207,15 @@ class BTHome : public Component, public esp32_ble_tracker::ESPBTDeviceListener {
 
 #ifdef USE_BINARY_SENSOR
   void set_window(binary_sensor::BinarySensor *window);
+  void set_motion(binary_sensor::BinarySensor *motion);
 #endif
 
 #ifdef USE_SENSOR
   void set_angle(sensor::Sensor *angle);
   void set_illuminance(sensor::Sensor *illuminance);
   void set_battery_level(sensor::Sensor *battery_level);
+  void set_temperature(sensor::Sensor *temperature);
+  void set_humidity(sensor::Sensor *humidity);
 #endif
 
  protected:
@@ -230,11 +233,14 @@ class BTHome : public Component, public esp32_ble_tracker::ESPBTDeviceListener {
 
 #ifdef USE_BINARY_SENSOR
   binary_sensor::BinarySensor *window_{nullptr};
+  binary_sensor::BinarySensor *motion_{nullptr};
 #endif
 #ifdef USE_SENSOR
   sensor::Sensor *angle_{nullptr};
   sensor::Sensor *illuminance_{nullptr};
   sensor::Sensor *battery_level_{nullptr};
+  sensor::Sensor *temperature_{nullptr};
+  sensor::Sensor *humidity_{nullptr};
 #endif
 };
 
