@@ -513,6 +513,10 @@ void BTHome::set_window(binary_sensor::BinarySensor *window) {
   this->window_ = window;
   this->set_publisher(oid_window.new_publisher(window));
 }
+void BTHome::set_motion(binary_sensor::BinarySensor *motion) {
+  this->motion_ = motion;
+  this->set_publisher(oid_motion.new_publisher(motion));
+}
 #endif
 
 #ifdef USE_SENSOR
@@ -527,6 +531,14 @@ void BTHome::set_illuminance(sensor::Sensor *illuminance) {
 void BTHome::set_battery_level(sensor::Sensor *battery_level) {
   this->battery_level_ = battery_level;
   this->set_publisher(oid_battery_percent.new_publisher(battery_level));
+}
+void BTHome::set_humidity(sensor::Sensor *humidity) {
+  this->humidity_ = humidity;
+  this->set_publisher(oid_humidity.new_publisher(humidity));
+}
+void BTHome::set_temperature(sensor::Sensor *temperature) {
+  this->temperature_ = temperature;
+  this->set_publisher(oid_temperature.new_publisher(temperature));
 }
 #endif
 
