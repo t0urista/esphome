@@ -81,7 +81,7 @@ async def to_code(config):
         sens = await sensor.new_sensor(config[CONF_HUMIDITY])
         cg.add(parent.set_humidity(sens))
 
-    if CONF_TEMPERATUREE in config:
+    if CONF_TEMPERATURE in config:
         sens = await sensor.new_sensor(config[CONF_TEMPERATURE])
         cg.add(parent.set_temperature(sens))
 
