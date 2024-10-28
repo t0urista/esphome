@@ -534,11 +534,11 @@ void BTHome::set_battery_level(sensor::Sensor *battery_level) {
 }
 void BTHome::set_humidity(sensor::Sensor *humidity) {
   this->humidity_ = humidity;
-  this->set_publisher(oid_humidity.new_publisher(humidity));
+  this->set_publisher(oid_humidity_percent_x100.new_publisher(humidity));
 }
 void BTHome::set_temperature(sensor::Sensor *temperature) {
   this->temperature_ = temperature;
-  this->set_publisher(oid_temperature.new_publisher(temperature));
+  this->set_publisher(oid_temperature_celsius_x100.new_publisher(temperature));
 }
 #endif
 
