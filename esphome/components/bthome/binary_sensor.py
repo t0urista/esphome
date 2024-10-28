@@ -1,8 +1,8 @@
 import esphome.codegen as cg
 import esphome.config_validation as cv
 from esphome.components import binary_sensor
-from esphome.components import sensor               // added dco
-from esphome.components import event                // added dco
+from esphome.components import sensor               
+from esphome.components import event                
 
 
 from esphome.const import (
@@ -69,7 +69,7 @@ from esphome.const import (
 from . import BTHome
 
 CONF_WINDOW = "window"
-CONF_MOTION = "motion"            // added dco
+CONF_MOTION = "motion"            
 
 DEPENDENCIES = ["bthome"]
 
@@ -94,6 +94,6 @@ async def to_code(config):
         sens = await binary_sensor.new_binary_sensor(config[CONF_WINDOW])
         cg.add(parent.set_window(sens))
 
-    if CONF_MOTION in config:                                                            // added dco
-        sens = await binary_sensor.new_binary_sensor(config[CONF_MOTION])                // added dco
-        cg.add(parent.set_window(sens))                                                  // added dco
+    if CONF_MOTION in config:                                                           
+        sens = await binary_sensor.new_binary_sensor(config[CONF_MOTION])               
+        cg.add(parent.set_window(sens))                                                 
