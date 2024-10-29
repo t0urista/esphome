@@ -4,7 +4,6 @@ from esphome.components import sensor
 from esphome.const import (
     CONF_ANGLE,
     CONF_BATTERY_LEVEL,
-    CONF_ID,
     CONF_ILLUMINANCE,
     CONF_HUMIDITY,
     CONF_TEMPERATURE,
@@ -17,6 +16,7 @@ from esphome.const import (
     UNIT_DEGREES,
     UNIT_LUX,
     UNIT_PERCENT,
+    CONF_ID,
 )
 
 from . import BTHome
