@@ -375,10 +375,13 @@ void BTHome::dump_config() {
   }
 #ifdef USE_BINARY_SENSOR
   LOG_BINARY_SENSOR("  ", "Window", this->window_);
+  LOG_BINARY_SENSOR("  ", "Motion", this->motion_);
 #endif
 #ifdef USE_SENSOR
   LOG_SENSOR("  ", "Illuminance", this->illuminance_);
   LOG_SENSOR("  ", "Battery Level", this->battery_level_);
+  LOG_SENSOR("  ", "Temperature", this->temperature_);
+  LOG_SENSOR("  ", "Humidity", this->humidity_);
 #endif
 }
 
