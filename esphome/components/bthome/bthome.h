@@ -163,6 +163,9 @@ class OIDSFixedPoint: public OIDFixedSize <oid, size_bytes> {
     };
   }
 
+  SensorPublisher *new_publisher(sensor::Sensor *sensor) const {
+    return new SensorPublisher(oid, OIDSFixedPoint::read, sensor);
+  }
   static constexpr int f_num_ = {f_num};
   static constexpr int f_denom_ = {f_denom};
 };
