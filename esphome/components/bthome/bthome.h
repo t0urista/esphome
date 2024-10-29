@@ -158,7 +158,7 @@ class OIDSFixedPoint: public OIDFixedSize <oid, size_bytes> {
       };
     }
     return FloatValue {
-      .value = read_sint(sr.value_size, sr.value_ptr) * f_num / f_denom,
+      .value = static_cast<float>(read_sint(sr.value_size, sr.value_ptr)) * f_num / f_denom,
       .next_ptr = sr.next_ptr,
     };
   }
