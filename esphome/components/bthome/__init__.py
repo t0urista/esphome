@@ -32,4 +32,5 @@ async def to_code(config):
     await esp32_ble_tracker.register_ble_device(var, config)
 
     cg.add(var.set_address(config[CONF_MAC_ADDRESS].as_hex))
-    cg.add(var.set_encryption_key(config[CONF_ENCRYPTION_KEY]))
+    if CONF_ENCRYPTION_KEY in config:
+         cg.add(var.set_encryption_key(config[CONF_ENCRYPTION_KEY]))
