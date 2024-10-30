@@ -149,7 +149,7 @@ const OIDUFixedPoint<0x3f, 2, 1, 10> oid_angle_degrees_x10;
 // 0x42    duration    uint24 (3 bytes)    0.001   424E3400    13.390  s
 // 0x43    current     uint16 (2 bytes)    0.001   434E34  13.39   A
 // 0x44    speed   uint16 (2 bytes)    0.01    444E34  133.90  m/s
-// 0x45    temperature     sint16 (2 bytes)    0.1     451101  27.3    °C
+const OIDSFixedPoint<0x45, 2, 1, 10> oid_temperature_celsius_x10;
 // 0x46    UV index    uint8 (1 byte)  0.1     4632    5.0
 // 0x47    volume  uint16 (2 bytes)    0.1     478756  2215.1  L
 // 0x48    volume  uint16 (2 bytes)    1   48DC87  34780   mL
@@ -238,6 +238,16 @@ static scan_func_t* oids[256] = {
   OID_ENTRY(oid_counter16),
   OID_ENTRY(oid_counter32),
   OID_ENTRY(oid_angle_degrees_x10),
+  [0x40] = nullptr,
+  [0x41] = nullptr,
+  [0x42] = nullptr,
+  [0x43] = nullptr,
+  [0x44] = nullptr,
+  OID_ENTRY(oid_temperature_celsius_x10),
+  [0x46] = nullptr,
+  [0x47] = nullptr,
+  [0x48] = nullptr,
+  [0x49] = nullptr,
 };
 
 uint32_t read_uint(size_t size, const uint8_t *data) {
@@ -539,9 +549,13 @@ void BTHome::set_humidity(sensor::Sensor *humidity) {
   this->humidity_ = humidity;
   this->set_publisher(oid_humidity_percent_x100.new_publisher(humidity));
 }
+//void BTHome::set_temperature(sensor::Sensor *temperature) {
+//  this->temperature_ = temperature;
+//  this->set_publisher(oid_temperature_celsius_x100.new_publisher(temperature));
+//}
 void BTHome::set_temperature(sensor::Sensor *temperature) {
   this->temperature_ = temperature;
-  this->set_publisher(oid_temperature_celsius_x100.new_publisher(temperature));
+  this->set_publisher(oid_temperature_celsius_x10.new_publisher(temperature));
 }
 #endif
 
