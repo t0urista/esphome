@@ -42,13 +42,13 @@ CONFIG_SCHEMA = cv.Schema(
         ),
         cv.Optional(CONF_ILLUMINANCE): sensor.sensor_schema(
             unit_of_measurement=UNIT_LUX,
-            accuracy_decimals=2,
+            accuracy_decimals=0,
             device_class=DEVICE_CLASS_ILLUMINANCE,
             state_class=STATE_CLASS_MEASUREMENT,
         ),
         cv.Optional(CONF_HUMIDITY): sensor.sensor_schema(
             unit_of_measurement=UNIT_PERCENT,
-            accuracy_decimals=2,
+            accuracy_decimals=0,
             device_class=DEVICE_CLASS_HUMIDITY,
             state_class=STATE_CLASS_MEASUREMENT,
         ),
