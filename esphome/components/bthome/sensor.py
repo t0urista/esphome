@@ -16,6 +16,7 @@ from esphome.const import (
     UNIT_DEGREES,
     UNIT_LUX,
     UNIT_PERCENT,
+    UNIT_CELSIUS,
     CONF_ID,
 )
 
