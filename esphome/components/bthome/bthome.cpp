@@ -384,14 +384,14 @@ void BTHome::dump_config() {
     ESP_LOGCONFIG(TAG, "  Encryption key not set");
   }
 #ifdef USE_BINARY_SENSOR
-  LOG_BINARY_SENSOR("  ", "Window", this->window_);
-  LOG_BINARY_SENSOR("  ", "Motion", this->motion_);
+  LOG_BINARY_SENSOR("  ", "window", this->window_);
+  LOG_BINARY_SENSOR("  ", "motion", this->motion_);
 #endif
 #ifdef USE_SENSOR
-  LOG_SENSOR("  ", "Illuminance", this->illuminance_);
-  LOG_SENSOR("  ", "Battery Level", this->battery_level_);
-  LOG_SENSOR("  ", "Temperature", this->temperature_);
-  LOG_SENSOR("  ", "Humidity", this->humidity_);
+  LOG_SENSOR("  ", "illuminance", this->illuminance_);
+  LOG_SENSOR("  ", "battery Level", this->battery_level_);
+  LOG_SENSOR("  ", "temperature", this->temperature_);
+  LOG_SENSOR("  ", "humidity", this->humidity_);
 #endif
 }
 
@@ -547,7 +547,7 @@ void BTHome::set_battery_level(sensor::Sensor *battery_level) {
 }
 void BTHome::set_humidity(sensor::Sensor *humidity) {
   this->humidity_ = humidity;
-  this->set_publisher(oid_humidity_percent_x100.new_publisher(humidity));
+  this->set_publisher(oid_humidity_percent.new_publisher(humidity));
 }
 //void BTHome::set_temperature(sensor::Sensor *temperature) {
 //  this->temperature_ = temperature;
