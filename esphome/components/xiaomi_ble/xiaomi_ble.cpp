@@ -91,7 +91,12 @@ bool parse_xiaomi_value(uint16_t value_type, const uint8_t *data, uint8_t value_
   // MiaoMiaoce humidity, 1 byte, 8-bit unsigned integer, 1 %
   else if ((value_type == 0x4C02) && (value_length == 1)) {
     result.humidity = data[0];
-  } else {
+  }     
+  // smoke detection, 1 byte, 8-bit unsigned integer  (JTYJGD03MI)        
+  else if ((value_type == 0x1015) && (value_length == 1)) {     
+    result.has_smoke = data[0];                                
+  }															  
+  else {
     return false;
   }
 
@@ -240,6 +245,9 @@ optional<XiaomiParseResult> parse_xiaomi_header(const esp32_ble_tracker::Service
     result.name = "RTCGQ02LM";
     if (raw.size() == 19)
       result.raw_offset -= 6;
+  } else if (device_uuid == 0x0997) {                  
+    result.type = XiaomiParseResult::TYPE_JTYJGD03MI;  
+    result.name = "JTYJGD03MI";	                       
   } else {
     ESP_LOGVV(TAG, "parse_xiaomi_header(): unknown device, no magic bytes.");
     return {};
@@ -377,6 +385,10 @@ bool report_xiaomi_results(const optional<XiaomiParseResult> &result, const std:
   if (result->button_press.has_value()) {
     ESP_LOGD(TAG, "  Button: %s", (*result->button_press) ? "pressed" : "");
   }
+  if (result->has_smoke.has_value()) {                                    
+    ESP_LOGI(TAG, "  Smoke: %s", (*result->has_smoke) ? "yes" : "no");   
+  }                                                                       
+
 
   return true;
 }
