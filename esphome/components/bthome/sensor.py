@@ -3,26 +3,6 @@ import esphome.config_validation as cv
 from esphome.components import sensor
 from . import BTHome
 from esphome.const import *
-"""
-from esphome.const import (
-    CONF_ANGLE,
-    CONF_BATTERY_LEVEL,
-    CONF_ILLUMINANCE,
-    CONF_HUMIDITY,
-    CONF_TEMPERATURE,
-    DEVICE_CLASS_BATTERY,
-    DEVICE_CLASS_ILLUMINANCE,
-    DEVICE_CLASS_HUMIDITY,
-    DEVICE_CLASS_TEMPERATURE,
-    ENTITY_CATEGORY_DIAGNOSTIC,
-    STATE_CLASS_MEASUREMENT,
-    UNIT_DEGREES,
-    UNIT_LUX,
-    UNIT_PERCENT,
-    UNIT_CELSIUS,
-    CONF_ID,
-)
-"""
 
 DEPENDENCIES = ["bthome"]
 
