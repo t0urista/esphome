@@ -397,10 +397,10 @@ void BTHome::dump_config() {
 
 bool BTHome::parse_device(const esp32_ble_tracker::ESPBTDevice &device) {
   if (device.address_uint64() != address_) {
-    ESP_LOGVV(TAG, "parse_device(): unknown MAC address.");
+    ESP_LOGD(TAG, "parse_device(): unknown MAC address.");
     return false;
   }
-  ESP_LOGVV(TAG, "parse_device(): MAC address %s found.", device.address_str().c_str());
+  ESP_LOGD(TAG, "parse_device(): MAC address %s found.", device.address_str().c_str());
 
   bool success = false;
   for (auto &service_data : device.get_service_datas()) {
@@ -431,7 +431,7 @@ bool BTHome::parse_device(const esp32_ble_tracker::ESPBTDevice &device) {
         + ((uint32_t)(service_data.data[service_data.data.size()-6]) << 16)
         + ((uint32_t)(service_data.data[service_data.data.size()-5]) << 24);
       if (this->last_pid_ != -1 && counter <= this->last_counter_) {
-        ESP_LOGV(TAG, "Packet counter already seen, skipping");
+        ESP_LOGD(TAG, "Packet counter already seen, skipping");
         continue;
       }
       this->last_counter_ = counter;
@@ -453,12 +453,12 @@ bool BTHome::parse_device(const esp32_ble_tracker::ESPBTDevice &device) {
     }
     for (const uint8_t *p = data; p < data + data_len;) {
       auto oid = *p++;
-      ESP_LOGVV(TAG, "OID %#02x", oid);
+      ESP_LOGD(TAG, "OID %#02x", oid);
 
       if (oid == oid_pid.oid_) {
         UInt32Value v = oid_pid.read(p, data + data_len - p);
         if (v.value == this->last_pid_) {
-          ESP_LOGV(TAG, "Packet ID %d already seen, skipping", v.value);
+          ESP_LOGD(TAG, "Packet ID %d already seen, skipping", v.value);
           break;
         }
         this->last_pid_ = v.value;
