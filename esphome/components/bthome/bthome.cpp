@@ -397,7 +397,7 @@ void BTHome::dump_config() {
 
 bool BTHome::parse_device(const esp32_ble_tracker::ESPBTDevice &device) {
   if (device.address_uint64() != address_) {
-    ESP_LOGD(TAG, "parse_device(): unknown MAC address.");
+    ESP_LOGV(TAG, "parse_device(): unknown MAC address.");
     return false;
   }
   ESP_LOGD(TAG, "parse_device(): MAC address %s found.", device.address_str().c_str());
