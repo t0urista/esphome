@@ -2,13 +2,15 @@ import esphome.codegen as cg
 import esphome.config_validation as cv
 from esphome.components import binary_sensor
 from esphome.const import (
-    CONF_SMOKE,
+#    CONF_SMOKE,
     CONF_TIMEOUT,
     DEVICE_CLASS_SMOKE,
     CONF_ID,
     CONF_BUTTON,
 )
 from esphome.core import TimePeriod
+
+CONF_SMOKE = "smoke"
 
 from . import XiaomiJTYJQD03MI
 
