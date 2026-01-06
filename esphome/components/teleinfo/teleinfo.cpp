@@ -137,10 +137,7 @@ void TeleInfo::loop() {
           ESP_LOGE(TAG, "No group found");
           break;
         }
-/* DCO 
-         if (!check_crc_(buf_finger, grp_end))
-            continue;
-*/
+
         /* Get tag */
         field_len = get_field(tag_, buf_finger, grp_end, separator_, MAX_TAG_SIZE);
         if (!field_len || field_len >= MAX_TAG_SIZE) {
@@ -148,12 +145,11 @@ void TeleInfo::loop() {
           continue;
         }
         
-/* DCO  */
          if (!check_crc_(buf_finger, grp_end)) {
              ESP_LOGE(TAG, "bad crc with tag %s", tag_);
+             continue;
          }
 
-/* DCP */
         /* Advance buf_finger to after the tag and the separator. */
         buf_finger += field_len + 1;
 
