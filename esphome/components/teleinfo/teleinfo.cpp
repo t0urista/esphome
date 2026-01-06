@@ -146,9 +146,7 @@ void TeleInfo::loop() {
         
 /* DCO  */
          if (!check_crc_(buf_finger, grp_end)) {
-             ESP_LOGE(TAG, "bad crc with tag. %s", tag_);
-         }else {
-             ESP_LOGE(TAG, "good crc with tag. %s", tag_);
+             ESP_LOGE(TAG, "bad crc with tag %s", tag_);
          }
 
 /* DCP */
