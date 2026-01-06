@@ -72,7 +72,7 @@ void TeleInfo::update() {
     buf_index_ = 0;
   // Flush Rx buffer at update. Ensure to start on a new Teleinfo frame
 	 while (available() > 0) {
-       read()
+       read();
     }
     state_ = ON;
   }
