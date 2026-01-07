@@ -39,7 +39,7 @@ static int get_field(char *dest, char *buf_start, char *buf_end, int sep, int ma
     ESP_LOGE(TAG, "bad crc for tag %s, got %d expected %d", tag_ , raw_crc, crc_tmp);
     return false;
   }
-  ESP_LOGD(TAG, "crc OK for tag %s ", tag_ );
+  ESP_LOGI(TAG, "crc OK for tag %s ", tag_ );
   return true;
 }
 bool TeleInfo::read_chars_until_(bool drop, uint8_t c) {
