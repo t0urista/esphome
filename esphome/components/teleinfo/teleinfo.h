@@ -47,7 +47,7 @@ class TeleInfo : public PollingComponent, public uart::UARTDevice {
     END_FRAME_RECEIVED,
   } state_{OFF};
   bool read_chars_until_(bool drop, uint8_t c);
-  bool check_crc_(const char *grp, const char *grp_end);
+  bool check_crc_(const char *grp, const char *grp_end, char *tag_);
   void publish_value_(const std::string &tag, const std::string &val);
 };
 }  // namespace teleinfo
