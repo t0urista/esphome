@@ -145,7 +145,7 @@ void TeleInfo::loop() {
         }
               
         if (!check_crc_(buf_finger, grp_end)) {
-           ESP_LOGE(TAG, "    --> bad crc was for tag  %s", tag_);
+           ESP_LOGE(TAG, "--> bad crc was for tag  %s", tag_);
            continue;
         }
 
