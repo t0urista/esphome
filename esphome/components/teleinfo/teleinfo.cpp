@@ -23,7 +23,8 @@ static int get_field(char *dest, char *buf_start, char *buf_end, int sep, int ma
   return len;
 }
 /* TeleInfo methods */
-bool TeleInfo::check_crc_(const char *grp, const char *grp_end) {
+/*bool TeleInfo::check_crc_(const char *grp, const char *grp_end) {*/
+  bool TeleInfo::check_crc_(const char *grp, const char *grp_end, char *tag_ ) {
   int grp_len = grp_end - grp;
   uint8_t raw_crc = grp[grp_len - 1];
   uint8_t crc_tmp = 0;
@@ -35,7 +36,7 @@ bool TeleInfo::check_crc_(const char *grp, const char *grp_end) {
   crc_tmp &= 0x3F;
   crc_tmp += 0x20;
   if (raw_crc != crc_tmp) {
-    ESP_LOGE(TAG, "bad crc: got %d expected %d", raw_crc, crc_tmp);
+    ESP_LOGE(TAG, "bad crc for tag %S : got %d expected %d", tag_ , raw_crc, crc_tmp);
     return false;
   }
 
@@ -144,11 +145,11 @@ void TeleInfo::loop() {
           ESP_LOGE(TAG, "Invalid tag.");
           continue;
         }
-        
-         if (!check_crc_(buf_finger, grp_end)) {
-             ESP_LOGE(TAG, "bad crc with tag %s", tag_);
-             continue;
-         }
+              
+        if (!check_crc_(buf_finger, grp_end, tag_)) {
+         /*    ESP_LOGE(TAG, "bad crc with tag %s", tag_);*/
+           continue;
+        }
 
         /* Advance buf_finger to after the tag and the separator. */
         buf_finger += field_len + 1;
