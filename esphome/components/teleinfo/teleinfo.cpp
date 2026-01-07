@@ -35,7 +35,7 @@ bool TeleInfo::check_crc_(const char *grp, const char *grp_end) {
   crc_tmp &= 0x3F;
   crc_tmp += 0x20;
   if (raw_crc != crc_tmp) {
-    ESP_LOGE(TAG, "bad crc, got %d expected %d", raw_crc, crc_tmp);
+    ESP_LOGE(TAG, "bad crc, got %d while expected %d", raw_crc, crc_tmp);
     return false;
   }
   return true;
@@ -145,7 +145,7 @@ void TeleInfo::loop() {
         }
               
         if (!check_crc_(buf_finger, grp_end)) {
-           ESP_LOGE(TAG, "bad crc for tag %s", tag_);
+           ESP_LOGE(TAG, "    --> bad crc was for tag  %s", tag_);
            continue;
         }
 
